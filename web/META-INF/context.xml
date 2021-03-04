@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/Quiz">
+<Resource
+    name="QuizOnline"
+    auth="Container"
+    type="javax.sql.DataSource"
+    driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    url="jdbc:sqlserver://localhost:1433;databaseName=QuizOnline"
+    username="linhtnl" 
+    password="123"
+/>
+
+</Context>

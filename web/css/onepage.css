@@ -1,0 +1,105 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 4, 2021, 5:09:12 PM
+    Author     : ASUS
+*/
+header .header-logo{
+    background: #4ba89c;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 170px; 
+}
+.header-bottom{
+    padding: 5px;
+    background: #3a8d82;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+.header-bottom label{
+    margin-left: 150px;
+}
+img{
+    border: 0 none;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+.header-right{
+    float: right;
+    padding-right: 170px;
+}
+.header-bottom-right{
+    float: right;
+    padding-right: 250px;
+}
+.header-bottom-right select{
+    border-radius: 8px;
+    font-size: 20px;
+}
+.header-bottom-right input{
+    border-radius: 5px;
+    font-size: 20px;
+}
+footer{
+    padding: 30px 40px 30px 170px;
+    width: 100%;
+    background: #4ba89c;
+    color: white;
+    height: 230px;
+    bottom: 0;
+    position: absolute;
+}
+footer a{
+    color: white;
+    text-decoration: none;
+}
+footer a:hover{
+    color: white;
+}
+
+.login-form{
+    background: #3a8d82;
+    margin:  7% 25%;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+    height: 220px;
+}
+.login-form a{
+    color: white;
+    font-style: italic
+}
+.login-form span{
+    color: red;
+    font-style: italic;
+    margin-left: 170px;
+    font-weight: bold;
+}
+.content{
+    margin:10px 20px;
+}
+.content input{
+    padding: 2% 2%;
+    height: 40px;
+    width: 100%;
+}
+.col-sm-5{
+    margin:  5px 0;
+}
+.table-head{
+    background: #b2cfd4;
+}
+.table-body-content {
+    width: 400px;
+}
+.table-body-number{
+    width: 15px;
+}
+.create-button{
+    margin-left: 41%
+}
