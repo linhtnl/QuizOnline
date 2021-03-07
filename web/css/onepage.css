@@ -23,6 +23,9 @@ header .header-logo{
 .header-bottom label{
     margin-left: 150px;
 }
+.pagination{
+    padding: 0 40%;
+}
 img{
     border: 0 none;
     height: auto;
@@ -52,7 +55,8 @@ footer{
     color: white;
     height: 230px;
     bottom: 0;
-    position: absolute;
+    clear: both;
+    margin-top:auto; 
 }
 footer a{
     color: white;
@@ -70,6 +74,7 @@ footer a:hover{
     border-radius: 8px;
     height: 220px;
 }
+
 .login-form a{
     color: white;
     font-style: italic
@@ -96,6 +101,7 @@ footer a:hover{
 }
 .table-body-content {
     width: 400px;
+    float: left;
 }
 .table-body-number{
     width: 15px;
@@ -103,3 +109,85 @@ footer a:hover{
 .create-button{
     margin-left: 41%
 }
+.pagination{
+    text-align: center;
+}
+.question-modal {
+    float: right;
+}
+.question-modal label{
+    font-weight: bold;
+    width: 140px;
+
+}
+main{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+#input-button{
+    width: 100px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.form-span{
+    text-align: center;
+    padding-left: 150px;
+}
+
+.nav-bar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    font-size: 30px;
+    padding: 8px 30px;
+    //height: 100%; /* chiều cao 100% */
+    //position: absolute; /* cố định thanh điều hướng cả khi cuộn để đọc website */
+    overflow: auto; /* nếu nội dung quá dài sẽ có thêm thanh cuộn để xem phần còn lại */
+ 
+}
+
+.nav-bar li a {
+    display: block;
+    color: #000;
+
+    text-decoration: none;
+
+}
+
+/* Change the link color on hover */
+.nav-bar li a:hover {
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+}
+
+.student-dashboard {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 420px;
+}
+.nav-bar{
+    float: left;
+    width: 20%;
+    height: 100%
+    background: #f1f1f1;
+    display: block;
+}
+.nav-bar input{
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+   
+}
+
+.student-main{
+    float: right;
+    width: 80%;
+   
+}
+nav-bar ul{
+    width: 20%;
+}
+

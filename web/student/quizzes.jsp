@@ -1,16 +1,15 @@
 <%-- 
-    Document   : dashboard
-    Created on : Mar 4, 2021, 11:17:35 PM
+    Document   : quizzes
+    Created on : Mar 7, 2021, 10:01:31 PM
     Author     : ASUS
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Student Dashboard</title>
+        <title>Review Quizzes</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -18,7 +17,7 @@
         <link rel="stylesheet" href="../css/onepage.css"/>
     </head>
     <body>
-        <%@include file="_header.jsp" %>       
+        <%@include file="_header.jsp" %>    
         <div class="student-dashboard">
             <div class="nav-bar">
                 <ul>
@@ -31,55 +30,51 @@
                 <div class="container"> 
                     <div class="form">
                         <div class="container mt-3">
-                            <h2>Take Quiz</h2>
+                            <h2>Quizzes are taken by you</h2>
 
                             <input class="form-control" id="myInput" type="text" placeholder="Search..">
                             <br>
-                            <form action="../QuizEnrollController" method="POST" name="dashboard">
+                            <form action="../QuizEnrollController" method="POST" name="quizzes">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Quiz Code</th>
                                             <th>Subject</th>
-                                            <th>Time Open</th>
-                                            <th>Time Close</th>
-                                            <th>Time Limit</th>
-                                            <th>Action</th>
+                                            <th>Score</th>
+                                            <th>Correct Answer</th>   
+                                            <th>Time Enroll</th>   
+                                            <th>
+                                                Details
+                                            </th>
                                         </tr>
                                     </thead>
-                                    <c:forEach items="${sessionScope.listQuiz}" var="dto">
+                                    <c:forEach items="${sessionScope.listQuizTaken}" var="dto">
                                         <tbody id="myTable">     
                                             <tr>
                                                 <td>${dto.quizID}</td>
                                                 <td>${dto.subID} - ${dto.subName}</td>
-                                                <td>${dto.timeOpen}</td>
-                                                <td>${dto.timeClose}</td>
-                                                <td>${dto.timeLimit} minutes</td>
-                                                <td><button class="btn btn-primary" type="button" onclick="TakeQuiz('${dto.quizID}', '${dto.isReady}')"> Take Quiz</button></td>
+                                                <td>${dto.score}</td>
+                                                <td>${dto.numOfCorrection}/${dto.numOfQuestion}</td>
+                                                <td>${dto.timeEnroll}</td>
+                                                <td><button class="btn btn-primary" type="button" onclick="Review('${dto.ID}')">Review</button> </td>
                                             </tr>
                                         </tbody>
                                     </c:forEach>
                                 </table>
-                                <input type="hidden" name="action" value="take_quiz"/>
-                                <input type="hidden" id="quizID" name="quizID" value=""/>
+                                <input type="hidden" name="action" value="review"/>
+                                <input type="hidden" id="ID" name="ID" value=""/>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>  
         </div>
-
         <%@include file="_footer.jsp" %>
     </body>
     <script>
-        function TakeQuiz(quizID, isReady) {
-            if (isReady == "false") {
-                alert("Sorry, cannot take this quiz in this time!");
-                return;
-            } else {
-                document.getElementById('quizID').value = quizID;
-                document.forms['dashboard'].submit();
-            }
+        function Review(id){
+            document.getElementById('ID').value=id;
+            document.forms['quizzes'].submit();
         }
         $(document).ready(function() {
             $("#myInput").on("keyup", function() {

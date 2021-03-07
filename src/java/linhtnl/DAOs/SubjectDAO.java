@@ -37,14 +37,17 @@ public class SubjectDAO {
     }
     
     public Vector<SubjectDTO> init()throws Exception{
-        Vector<SubjectDTO> result =null;
+        Vector<SubjectDTO> result = new Vector<>();
         try{
-            String sql= "select SubID, subName from, tblSubject";
+            String sql= "select SubID, subName from tblSubject";
             con=LinhConnection.getConnection();
             pst = con.prepareStatement(sql);
             rs=pst.executeQuery();
             while(rs.next()){
-                SubjectDTO dto = new SubjectDTO(rs.getString("SubID"),rs.getString("subName"));
+                String id = rs.getString("SubID");
+                String name = rs.getString("subName");
+                SubjectDTO dto = new SubjectDTO(id, name);
+                System.out.println(dto);
                 result.add(dto);
             }
         }finally{

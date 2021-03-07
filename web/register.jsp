@@ -103,14 +103,20 @@
                         <label>Confirm Password: </label>
                         <input type="password" name="confirmPassword" required="" id="confirmPass"/>
                         <span id="confirmPass_ERR"></span>
+                      
+                    </div>
+                    <div class="form-item">
+                        <span style="padding-left: 300px;">${sessionScope.ACC.error}</span>  
                     </div>
                     <input type="hidden" name="action" value="register"/>
                     <div class="form-item-button">
+                        
                         <button class="btn btn-secondary" type="button" onclick="Back()">Back</button>
                         <button class="btn btn-primary" type="button" onclick="Register()">Register</button>
                     </div>
                 </form>
             </div>
+            
         </div>
         <%@include file="footer.jsp" %>
     </body>

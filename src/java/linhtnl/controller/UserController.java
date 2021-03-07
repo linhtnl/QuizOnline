@@ -15,8 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import linh.util.Constants;
+import linhtnl.DAOs.QuestionDAO;
+import linhtnl.DAOs.QuizDAO;
 import linhtnl.DAOs.SubjectDAO;
 import linhtnl.DAOs.UserDAO;
+import linhtnl.DTOs.QuestionDTO;
+import linhtnl.DTOs.QuizDTO;
+import linhtnl.DTOs.QuizEnrollDTO;
 import linhtnl.DTOs.SubjectDTO;
 import linhtnl.DTOs.UserDTO;
 
@@ -83,7 +88,7 @@ public class UserController extends HttpServlet {
             HttpSession session = request.getSession();
             UserDAO dao = new UserDAO();
             String action = request.getParameter("action");
-            UserDTO dto=null;
+            UserDTO dto = new UserDTO();
             if (action.equals("login")) {
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
@@ -97,13 +102,24 @@ public class UserController extends HttpServlet {
                     SubjectDAO subDAO = new SubjectDAO();
                     Vector<SubjectDTO> listSubject = subDAO.init();
                     //INIT QUESTION
-                    
-                    
+                    QuestionDAO quesDAO = new QuestionDAO();
+                    int page = 1;
+                    int totalPage = quesDAO.getTotalPages();
+                    Vector<QuestionDTO> listQuestion = quesDAO.getQuestionbyPage(page,null);
+                    session.setAttribute("totalPage", totalPage);
+                    session.setAttribute("listQuestion", listQuestion);
+                    session.setAttribute("pageNum", page);
                     session.setAttribute("listSubject", listSubject);
                 } else if (dto.getRole().equalsIgnoreCase("student")) {
+                    //Get list Quiz
+                    QuizDAO qDAO=new QuizDAO();
+                    Vector<QuizDTO> listQuiz = qDAO.init();
+                    session.setAttribute("listQuiz", listQuiz);
+                    Vector<QuizEnrollDTO> listQuizTaken = qDAO.getQuizzesByStudentID(dto.getEmail());
+                    session.setAttribute("listQuizTaken", listQuizTaken);
                     url = Constants.STUDENT_DASHBOARD;
                 }
-
+                session.setAttribute("ACC", dto);
             } else if (action.equals("register")) {
                 String email = request.getParameter("email");
                 String name = request.getParameter("name");
@@ -113,19 +129,20 @@ public class UserController extends HttpServlet {
                 dto.setUsername(name);
                 if (dao.isExist(email)) {
                     dto.setError("Email is registed");
-                    url = Constants.LOGIN;
+                    url = Constants.REGISTRATION;
                 } else {
                     boolean check = dao.createNewAccount(dto);
                     if (check) {
                         url = Constants.STUDENT_DASHBOARD;
                     }
                 }
-            } else if(action.equals("logout")){
-                url=Constants.LOGIN;
+                session.setAttribute("ACC", dto);
+            } else if (action.equals("logout")) {
                 session.invalidate();
+                url = Constants.LOGIN;
             }
-            session.setAttribute("ACC", dto);
         } catch (Exception e) {
+            e.printStackTrace();
             log("ERROR at doPost-UserController: " + e.getMessage());
         } finally {
             response.sendRedirect(url);

@@ -13,9 +13,9 @@ import java.io.Serializable;
  * @author ASUS
  */
 public class QuestionDTO implements Serializable{
-    private String content, optionA,optionB,optionC,optionD,correctAnswer,userID,createDate;
+    private String content, optionA,optionB,optionC,optionD,correctAnswer,userID,createDate,questionID,subID;
     private boolean isAvailable;
-
+    private String stuAnswer;
     public QuestionDTO() {
     }
 
@@ -23,6 +23,30 @@ public class QuestionDTO implements Serializable{
         return content;
     }
 
+    public void setStuAnswer(String stuAnswer) {
+        this.stuAnswer = stuAnswer;
+    }
+
+    public String getStuAnswer() {
+        return stuAnswer;
+    }
+
+    public String getQuestionID() {
+        return questionID;
+    }
+
+    public void setSubID(String subID) {
+        this.subID = subID;
+    }
+
+    public String getSubID() {
+        return subID;
+    }
+
+    public void setQuestionID(String questionID) {
+        this.questionID = questionID;
+    }
+    
     public void setContent(String content) {
         this.content = content;
     }
@@ -89,6 +113,11 @@ public class QuestionDTO implements Serializable{
 
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return questionID +" - "+content;
     }
     
 }

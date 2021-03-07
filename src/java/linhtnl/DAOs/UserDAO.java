@@ -38,10 +38,13 @@ public class UserDAO implements Serializable {
     public UserDTO checkLogin(String email, String password) throws Exception {
         UserDTO dto = new UserDTO(email);
         try {
-            String sql = "Select role,username from tblUser where UserID='" + email + "' and password='" + SHA.toHexString(SHA.getSHA(password)) + "'";
+            String sql = "Select role, username from tblUser where UserID = ? and password = ? ";          
             con = LinhConnection.getConnection();
             pst = con.prepareStatement(sql);
+            pst.setString(1, email);
+            pst.setString(2, SHA.toHexString(SHA.getSHA(password)));
             rs = pst.executeQuery();
+            System.out.println(pst);
             if (rs.next()) {
                 dto.setRole(rs.getString("role"));
                 dto.setUsername(rs.getString("username"));

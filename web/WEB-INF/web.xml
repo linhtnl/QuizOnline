@@ -4,9 +4,25 @@
         <servlet-name>UserController</servlet-name>
         <servlet-class>linhtnl.controller.UserController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QuestionController</servlet-name>
+        <servlet-class>linhtnl.controller.QuestionController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizEnrollController</servlet-name>
+        <servlet-class>linhtnl.controller.QuizEnrollController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/UserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuestionController</servlet-name>
+        <url-pattern>/QuestionController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizEnrollController</servlet-name>
+        <url-pattern>/QuizEnrollController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

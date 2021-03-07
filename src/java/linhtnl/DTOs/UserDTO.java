@@ -20,6 +20,9 @@ public class UserDTO implements Serializable{
         this.email = email; 
     }
 
+    public UserDTO() {
+    }
+    
     public String getError() {
         return error;
     }
