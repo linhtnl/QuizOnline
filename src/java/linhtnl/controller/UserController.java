@@ -105,14 +105,14 @@ public class UserController extends HttpServlet {
                     QuestionDAO quesDAO = new QuestionDAO();
                     int page = 1;
                     int totalPage = quesDAO.getTotalPages();
-                    Vector<QuestionDTO> listQuestion = quesDAO.getQuestionbyPage(page,null);
+                    Vector<QuestionDTO> listQuestion = quesDAO.getQuestionbyPage(page, null);
                     session.setAttribute("totalPage", totalPage);
                     session.setAttribute("listQuestion", listQuestion);
                     session.setAttribute("pageNum", page);
                     session.setAttribute("listSubject", listSubject);
                 } else if (dto.getRole().equalsIgnoreCase("student")) {
                     //Get list Quiz
-                    QuizDAO qDAO=new QuizDAO();
+                    QuizDAO qDAO = new QuizDAO();
                     Vector<QuizDTO> listQuiz = qDAO.init();
                     session.setAttribute("listQuiz", listQuiz);
                     Vector<QuizEnrollDTO> listQuizTaken = qDAO.getQuizzesByStudentID(dto.getEmail());
@@ -134,6 +134,11 @@ public class UserController extends HttpServlet {
                     boolean check = dao.createNewAccount(dto);
                     if (check) {
                         url = Constants.STUDENT_DASHBOARD;
+                        QuizDAO qDAO = new QuizDAO();
+                        Vector<QuizDTO> listQuiz = qDAO.init();
+                        session.setAttribute("listQuiz", listQuiz);
+                        Vector<QuizEnrollDTO> listQuizTaken = qDAO.getQuizzesByStudentID(dto.getEmail());
+                        session.setAttribute("listQuizTaken", listQuizTaken);
                     }
                 }
                 session.setAttribute("ACC", dto);
@@ -145,6 +150,7 @@ public class UserController extends HttpServlet {
             e.printStackTrace();
             log("ERROR at doPost-UserController: " + e.getMessage());
         } finally {
+//            request.getRequestDispatcher(url).forward(request, response);
             response.sendRedirect(url);
         }
     }

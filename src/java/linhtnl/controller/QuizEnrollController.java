@@ -122,7 +122,7 @@ public class QuizEnrollController extends HttpServlet {
                         }
                         String enrollID = (String) session.getAttribute("enrollID");
                         boolean a = dao.writeAnswer(listQ, enrollID);
-                        System.out.println(a);
+                       
                         dao.submitQuiz(listQ, enrollID);
                         Vector<QuizEnrollDTO> listQuizTaken = new QuizDAO().getQuizzesByStudentID(acc.getEmail());
                         session.setAttribute("listQuizTaken", listQuizTaken);
@@ -137,9 +137,7 @@ public class QuizEnrollController extends HttpServlet {
                             }
                         }
                         Vector<QuestionDTO> questions = new QuizDAO().getQuestionByQuizID(id);
-                        for (QuestionDTO d : questions) {
-                            System.out.println(d.getQuestionID()+" - "+d.getStuAnswer());
-                        }
+                       
                         session.setAttribute("questionsQuizz", questions);
                         session.setAttribute("QuizEnrollDTO", dto);
                         url = Constants.STUDENT_REVIEW;

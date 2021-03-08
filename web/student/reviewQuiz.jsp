@@ -37,22 +37,22 @@
                     var optionD = document.getElementById('optionD-' + ids[i]).value;
                     console.log(i + stu + ' - ' + optionA);
                     flag = '';
-                    if (stu == '') {
-                        switch(correct){
-                            case optionA:
-                                document.getElementById('span-optionA' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
-                                break;
-                            case optionB:
-                                document.getElementById('span-optionB' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
-                                break;
-                            case optionC:
-                                document.getElementById('span-optionC' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
-                                break;
-                            case optionD:
-                                document.getElementById('span-optionD' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
-                                break;
-                        }
-                    } else {
+
+                    switch (correct) {
+                        case optionA:
+                            document.getElementById('span-optionA' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
+                            break;
+                        case optionB:
+                            document.getElementById('span-optionB' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
+                            break;
+                        case optionC:
+                            document.getElementById('span-optionC' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
+                            break;
+                        case optionD:
+                            document.getElementById('span-optionD' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
+                            break;
+                    }
+                    if (stu != '') {
                         if (stu == optionA) {
                             document.getElementById('optionA-' + ids[i]).checked = true;
                             flag = 'A';
@@ -69,9 +69,7 @@
                     }
                     if (flag != '') {
                         var temp = 'option' + flag;
-                        if (stu == correct) {
-                            document.getElementById('span-option' + flag + '-' + ids[i]).innerHTML = '  <img src="../img/951a617272553f49e75548e212ed947f-curved-check-mark-icon-by-vexels.png" width="25px" height="25px">';
-                        } else {
+                        if (stu != correct) {
                             document.getElementById('span-option' + flag + '-' + ids[i]).innerHTML = '<img src="../img/5606866-mitchell-aluminium-american-red-cross-symbol-clip-art-wrong-png-cross-sign-png-709_612_preview.png" width="20px" height="20px">';
                         }
                     }
@@ -108,11 +106,11 @@
                             <input type="radio"  id="optionA-${dto.questionID}" value="${dto.optionA}" disabled="true"/>
                             <label for="optionA" id="option-${dto.questionID}">${dto.optionA}</label><span id="span-optionA-${dto.questionID}"></span><br>
                             <input type="radio"  id="optionB-${dto.questionID}" value="${dto.optionB}" disabled="true"/>
-                            <label for="optionB" id="option-${dto.questionID}">${dto.optionB}</label><span id="span-optionB-${dto.questionID}"><br>  
+                            <label for="optionB" id="option-${dto.questionID}">${dto.optionB}</label><span id="span-optionB-${dto.questionID}"></span><br>  
                                 <input type="radio"  id="optionC-${dto.questionID}" value="${dto.optionC}" disabled="true"/>
-                                <label for="optionC" id="option-${dto.questionID}">${dto.optionC}</label><span id="span-optionC-${dto.questionID}"><br>
+                                <label for="optionC" id="option-${dto.questionID}">${dto.optionC}</label><span id="span-optionC-${dto.questionID}"></span><br>
                                     <input type="radio"  id="optionD-${dto.questionID}" value="${dto.optionD}" disabled="true"/>
-                                    <label for="optionD" id="option-${dto.questionID}">${dto.optionD}</label><span id="span-optionD-${dto.questionID}"><br>
+                                    <label for="optionD" id="option-${dto.questionID}">${dto.optionD}</label><span id="span-optionD-${dto.questionID}"></span><br>
                                         <br>
                                         </div>
                                     </c:forEach>
