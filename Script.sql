@@ -3,11 +3,7 @@ GO
 /****** Object:  Database [QuizOnline]    Script Date: 3/8/2021 10:33:57 PM ******/
 CREATE DATABASE [QuizOnline]
  CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'QuizOnline', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER06\MSSQL\DATA\QuizOnline.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'QuizOnline_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER06\MSSQL\DATA\QuizOnline_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
-GO
+ 
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
 EXEC [QuizOnline].[dbo].[sp_fulltext_database] @action = 'enable'
@@ -78,7 +74,7 @@ GO
 USE [QuizOnline]
 GO
 /****** Object:  User [linhtnl]    Script Date: 3/8/2021 10:33:57 PM ******/
-CREATE USER [linhtnl] FOR LOGIN [linhtnl] WITH DEFAULT_SCHEMA=[dbo]
+
 GO
 /****** Object:  UserDefinedFunction [dbo].[east_or_west]    Script Date: 3/8/2021 10:33:57 PM ******/
 SET ANSI_NULLS ON
